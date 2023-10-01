@@ -2,8 +2,8 @@ type DeviceType = 'Mobile' | 'Tablet' | 'Desktop' | 'Unknown'
 type Orientation = 'Portrait' | 'Landscape' | 'Unknown'
 
 const device = {
-  type(userAgentArg?: string): DeviceType {
-    const userAgent = userAgentArg || (typeof navigator === 'undefined' ? '' : navigator.userAgent)
+  type(ua?: string): DeviceType {
+    const userAgent = ua || (typeof navigator === 'undefined' ? '' : navigator.userAgent)
     const mobile = /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile/.test(userAgent)
     const tablet = /Tablet|iPad/i.test(userAgent)
 
@@ -13,8 +13,8 @@ const device = {
 
     return 'Unknown'
   },
-  brand(userAgentArg?: string): string | null {
-    const userAgent = userAgentArg || (typeof navigator === 'undefined' ? '' : navigator.userAgent)
+  brand(ua?: string): string | null {
+    const userAgent = ua || (typeof navigator === 'undefined' ? '' : navigator.userAgent)
 
     if (/Windows Phone/i.test(userAgent)) return 'Microsoft'
     if (/iPhone|iPad|iPod/i.test(userAgent)) return 'Apple'
@@ -67,14 +67,14 @@ const device = {
 
     return null
   },
-  is(type: string, userAgentArg?: string): boolean {
+  is(type: string, ua?: string): boolean {
     switch (type.toLowerCase()) {
       case 'mobile':
-        return this.type(userAgentArg) === 'Mobile'
+        return this.type(ua) === 'Mobile'
       case 'tablet':
-        return this.type(userAgentArg) === 'Tablet'
+        return this.type(ua) === 'Tablet'
       case 'desktop':
-        return this.type(userAgentArg) === 'Desktop'
+        return this.type(ua) === 'Desktop'
       case 'portrait':
         return this.orientation() === 'Portrait'
       case 'landscape':
