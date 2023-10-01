@@ -57,7 +57,7 @@ const languages = device.languages()
 console.log(languages) // Outputs: ['en-US', 'en-GB', 'fr-FR', etc.]
 ```
 
-#### Using the `is`` Method:
+#### Using the `is` Method:
 
 ```javascript
 const isMobile = device.is('mobile')
