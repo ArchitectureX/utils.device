@@ -69,6 +69,8 @@ const device = {
   },
   is(type: string, ua?: string): boolean {
     switch (type.toLowerCase()) {
+      case 'ssr':
+        return typeof window === 'undefined'
       case 'mobile':
         return this.type(ua) === 'Mobile'
       case 'tablet':
